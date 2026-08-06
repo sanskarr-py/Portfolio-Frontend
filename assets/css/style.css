@@ -88,6 +88,7 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 90px;
     width: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -97,6 +98,45 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Form controls should inherit the site font */
+button, input, textarea, select {
+    font-family: inherit;
+}
+
+/* Text selection */
+::selection {
+    background: var(--primary);
+    color: var(--text-white);
+}
+
+/* Accessible keyboard focus */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+/* Skip Link (shown on keyboard focus) */
+.skip-link {
+    position: fixed;
+    top: -72px;
+    left: 16px;
+    z-index: 2000;
+    background: var(--primary);
+    color: var(--text-white);
+    padding: 12px 20px;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: var(--shadow-md);
+    transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+    top: 0;
 }
 
 /* Custom Scrollbar */
@@ -180,6 +220,10 @@ img {
     box-shadow: var(--shadow-glow);
 }
 
+.btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
 .btn-outline {
     border-color: var(--primary);
     color: var(--primary);
@@ -248,7 +292,11 @@ img {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-light);
-    transition: background-color var(--transition-normal), border-color var(--transition-normal);
+    transition: background-color var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.navbar.scrolled {
+    box-shadow: var(--shadow-md);
 }
 
 .navbar-container {
@@ -447,6 +495,20 @@ img {
 .hero h1 span {
     color: var(--primary);
     position: relative;
+    z-index: 0;
+}
+
+/* Soft hand-drawn underline under the highlighted name */
+.hero h1 span::after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    bottom: 6px;
+    height: 12px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'><path d='M4 9c18-7 38-7 56-3 20 4 40 4 56-3' fill='none' stroke='%23059669' stroke-width='4' stroke-linecap='round' opacity='0.35'/></svg>") center / 100% 100% no-repeat;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .hero-title-typing {
@@ -586,6 +648,54 @@ img {
 @keyframes float {
     0% { transform: translateY(0px); }
     100% { transform: translateY(-12px); }
+}
+
+/* Scroll Down Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+    z-index: 5;
+}
+
+.scroll-indicator:hover {
+    color: var(--primary);
+}
+
+.scroll-mouse {
+    width: 26px;
+    height: 42px;
+    border: 2px solid currentColor;
+    border-radius: var(--radius-full);
+    display: flex;
+    justify-content: center;
+    padding-top: 7px;
+    transition: border-color var(--transition-fast);
+}
+
+.scroll-wheel {
+    width: 4px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: currentColor;
+    animation: scrollWheel 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+    0% { transform: translateY(0); opacity: 1; }
+    70% { transform: translateY(12px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 0; }
 }
 
 /* --------------------------------------------------------------------------
@@ -756,6 +866,20 @@ img {
     flex-direction: column;
 }
 
+/* Project filtering states */
+.project-card.card-hidden {
+    display: none;
+}
+
+.project-card.card-in {
+    animation: cardIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cardIn {
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 .project-card:hover {
     transform: translateY(-10px);
     box-shadow: var(--shadow-lg);
@@ -848,8 +972,10 @@ img {
 }
 
 .btn-dark:hover {
-    opacity: 0.9;
+    background: var(--primary);
+    color: var(--text-white);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
 }
 
 /* --------------------------------------------------------------------------
@@ -1000,6 +1126,13 @@ img {
     box-shadow: 0 0 0 3px var(--primary-light);
 }
 
+/* Invalid field state (client-side validation) */
+.form-group.invalid input,
+.form-group.invalid textarea {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
 .contact-message button[type="submit"] {
     display: inline-flex;
     align-items: center;
@@ -1022,6 +1155,17 @@ img {
     background: var(--primary-hover);
     transform: translateY(-2px);
     box-shadow: var(--shadow-glow);
+}
+
+.contact-message button[type="submit"]:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.contact-message button[type="submit"]:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 /* --------------------------------------------------------------------------
@@ -1124,6 +1268,14 @@ footer {
     font-size: 20px;
 }
 
+.toast.error {
+    border-color: #ef4444;
+}
+
+.toast.error i {
+    color: #ef4444;
+}
+
 @keyframes toastIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -1141,6 +1293,10 @@ footer {
     .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
+    }
+
+    .scroll-indicator {
+        display: none;
     }
 
     .hero-image {
@@ -1216,5 +1372,44 @@ footer {
 
     .highlight-card {
         min-width: 100%;
+    }
+
+    .logo-text p {
+        display: none;
+    }
+
+    .nav-right {
+        gap: 12px;
+    }
+
+    .logo-text h2 {
+        font-size: 16px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   12. ACCESSIBILITY: REDUCED MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .js-reveal .reveal:not(.active) {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .scroll-wheel,
+    .typing-cursor {
+        display: none;
     }
 }

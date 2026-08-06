@@ -5,10 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Apply saved theme before first paint (prevents flash of wrong theme) -->
+    <script>
+        (function () {
+            try {
+                var theme = localStorage.getItem('theme');
+                if (!theme) {
+                    theme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+                }
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) { }
+        })();
+    </script>
+
     <meta name="description"
         content="Sanskar Acharya - BSc.CSIT Student, Python & Django Developer. Explore my projects, technical skills, and software development journey.">
     <meta name="keywords" content="Sanskar Acharya, Python, Django, BSc CSIT, Portfolio, Nepal, Web Development">
     <meta name="author" content="Sanskar Acharya">
+    <meta name="theme-color" content="#f8fafc">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sanskar Acharya Portfolio">
+    <meta property="og:title" content="Sanskar Acharya | Portfolio">
+    <meta property="og:description"
+        content="BSc.CSIT Student, Python & Django Developer. Explore my projects, technical skills, and software development journey.">
 
     <title>Sanskar Acharya | Portfolio</title>
 
@@ -21,6 +42,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome Icons -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <!-- Custom CSS Styles -->
@@ -28,6 +50,9 @@
 </head>
 
 <body>
+
+    <!-- Skip Link (accessibility) -->
+    <a class="skip-link" href="#home">Skip to content</a>
 
     <!-- Navbar -->
     <nav class="navbar">
@@ -44,7 +69,7 @@
 
             <!-- Navigation Controls & Links -->
             <div class="nav-right">
-                <ul class="nav-links">
+                <ul class="nav-links" id="nav-links">
                     <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
@@ -58,7 +83,8 @@
                 </button>
 
                 <!-- Mobile Hamburger Menu Button -->
-                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu"
+                    aria-expanded="false" aria-controls="nav-links">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -115,7 +141,7 @@
             <!-- Hero Image & Floating Badges -->
             <div class="hero-image">
                 <div class="image-wrapper">
-                    <img src="assets/images/profile.jpg" alt="Sanskar Acharya Profile Picture">
+                    <img src="assets/images/profile.jpg" alt="Sanskar Acharya Profile Picture" width="340" height="340" fetchpriority="high">
                 </div>
                 <div class="badge-floating badge-python">
                     <i class="fa-brands fa-python" style="color: #387eb8;"></i> Python 3.12
@@ -126,6 +152,12 @@
             </div>
 
         </div>
+
+        <!-- Scroll Down Indicator -->
+        <a href="#about" class="scroll-indicator" aria-label="Scroll down to About section">
+            <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
+            <span class="scroll-text">Scroll</span>
+        </a>
     </section>
 
     <!-- About Section -->
@@ -229,10 +261,10 @@
         </div>
 
         <!-- Project Filter Buttons -->
-        <div class="project-filters">
-            <button class="filter-btn active" data-filter="all">All Projects</button>
-            <button class="filter-btn" data-filter="django">Django Apps</button>
-            <button class="filter-btn" data-filter="python">Python Scripts</button>
+        <div class="project-filters" role="group" aria-label="Filter projects by category">
+            <button class="filter-btn active" data-filter="all" aria-pressed="true">All Projects</button>
+            <button class="filter-btn" data-filter="django" aria-pressed="false">Django Apps</button>
+            <button class="filter-btn" data-filter="python" aria-pressed="false">Python Scripts</button>
         </div>
 
         <div class="projects-grid">
@@ -240,7 +272,7 @@
             <!-- Project 1 -->
             <article class="project-card" data-category="django">
                 <div class="project-image">
-                    <img src="assets/images/project_library.png" alt="Library Management System Dashboard Preview">
+                    <img src="assets/images/project_library.jpg" alt="Library Management System Dashboard Preview" loading="lazy" width="1024" height="1024">
                 </div>
                 <div class="project-body">
                     <span class="project-tag">Django Web App</span>
@@ -255,7 +287,7 @@
                         <span>Bootstrap</span>
                     </div>
                     <div class="project-buttons">
-                        <a href="https://github.com/sanskarr-py" target="_blank" class="btn-dark">
+                        <a href="https://github.com/sanskarr-py" target="_blank" rel="noopener noreferrer" class="btn-dark">
                             <i class="fa-brands fa-github"></i> GitHub Code
                         </a>
                     </div>
@@ -265,7 +297,7 @@
             <!-- Project 2 -->
             <article class="project-card" data-category="python">
                 <div class="project-image">
-                    <img src="assets/images/project_rps.png" alt="Rock Paper Scissors Game Preview">
+                    <img src="assets/images/project_rps.jpg" alt="Rock Paper Scissors Game Preview" loading="lazy" width="1024" height="1024">
                 </div>
                 <div class="project-body">
                     <span class="project-tag">Python Game</span>
@@ -279,7 +311,7 @@
                         <span>CLI</span>
                     </div>
                     <div class="project-buttons">
-                        <a href="https://github.com/sanskarr-py" target="_blank" class="btn-dark">
+                        <a href="https://github.com/sanskarr-py" target="_blank" rel="noopener noreferrer" class="btn-dark">
                             <i class="fa-brands fa-github"></i> GitHub Code
                         </a>
                     </div>
@@ -289,7 +321,7 @@
             <!-- Project 3 -->
             <article class="project-card" data-category="python">
                 <div class="project-image">
-                    <img src="assets/images/project_wordle.png" alt="Wordle Game Preview">
+                    <img src="assets/images/project_wordle.jpg" alt="Wordle Game Preview" loading="lazy" width="1024" height="1024">
                 </div>
                 <div class="project-body">
                     <span class="project-tag">Python Game</span>
@@ -303,7 +335,7 @@
                         <span>Game Logic</span>
                     </div>
                     <div class="project-buttons">
-                        <a href="https://github.com/sanskarr-py" target="_blank" class="btn-dark">
+                        <a href="https://github.com/sanskarr-py" target="_blank" rel="noopener noreferrer" class="btn-dark">
                             <i class="fa-brands fa-github"></i> GitHub Code
                         </a>
                     </div>
@@ -349,18 +381,18 @@
                     <i class="fa-brands fa-github"></i>
                     <div>
                         <small>GitHub</small>
-                        <a href="https://github.com/sanskarr-py" target="_blank">github.com/sanskarr-py</a>
+                        <a href="https://github.com/sanskarr-py" target="_blank" rel="noopener noreferrer">github.com/sanskarr-py</a>
                     </div>
                 </div>
 
                 <div class="social-links">
-                    <a href="https://github.com/sanskarr-py" target="_blank" aria-label="GitHub Profile">
+                    <a href="https://github.com/sanskarr-py" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
                         <i class="fa-brands fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/sanskar-acharya-5b60663b0/" target="_blank" aria-label="LinkedIn Profile">
+                    <a href="https://www.linkedin.com/in/sanskar-acharya-5b60663b0/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
                         <i class="fa-brands fa-linkedin"></i>
                     </a>
-                    <a href="https://instagram.com/sanskar_ac" target="_blank" aria-label="Instagram Profile">
+                    <a href="https://instagram.com/sanskar_ac" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                 </div>
