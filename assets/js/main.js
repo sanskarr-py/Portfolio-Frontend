@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const phrases = [
             'BSc.CSIT Student 🎓',
             'Python Enthusiast 🐍',
-            'Django Learner 💻',
+            'Django Developer 💻',
             'Backend Developer in Progress 🚀'
         ];
 
@@ -191,50 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ----------------------------------------------------------------------
-    // 5. PROJECT CATEGORY FILTERING
-    // ----------------------------------------------------------------------
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-
-    let activeFilter = 'all';
-
-    function applyProjectFilter(filterValue) {
-        if (filterValue === activeFilter) return;
-        activeFilter = filterValue;
-
-        const visibleCards = [];
-        projectCards.forEach(card => {
-            const matches = filterValue === 'all' || card.dataset.category === filterValue;
-            card.classList.toggle('card-hidden', !matches);
-            if (matches) visibleCards.push(card);
-        });
-
-        // Staggered entrance for newly visible cards
-        visibleCards.forEach((card, index) => {
-            card.classList.remove('card-in');
-            void card.offsetWidth; // restart the animation
-            card.style.animationDelay = `${index * 70}ms`;
-            card.classList.add('card-in');
-        });
-
-        setTimeout(() => {
-            visibleCards.forEach(card => { card.style.animationDelay = ''; });
-        }, 400 + visibleCards.length * 70);
-    }
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            filterButtons.forEach(btn => {
-                const isActive = btn === button;
-                btn.classList.toggle('active', isActive);
-                btn.setAttribute('aria-pressed', String(isActive));
-            });
-            applyProjectFilter(button.dataset.filter);
-        });
-    });
-
-    // ----------------------------------------------------------------------
-    // 6. CONTACT FORM HANDLING & TOAST NOTIFICATION
+    // 5. CONTACT FORM HANDLING & TOAST NOTIFICATION
     // ----------------------------------------------------------------------
     const contactForm = document.getElementById('contact-form');
 
