@@ -5,19 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Apply saved theme before first paint (prevents flash of wrong theme) -->
-    <script>
-        (function () {
-            try {
-                var theme = localStorage.getItem('theme');
-                if (!theme) {
-                    theme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-                }
-                document.documentElement.setAttribute('data-theme', theme);
-            } catch (e) { }
-        })();
-    </script>
-
     <meta name="description"
         content="Sanskar Acharya - BSc.CSIT Student, Python & Django Developer. Explore my projects, technical skills, and software development journey.">
     <meta name="keywords" content="Sanskar Acharya, Python, Django, BSc CSIT, Portfolio, Nepal, Web Development">
@@ -77,11 +64,6 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
 
-                <!-- Theme Switcher Toggle -->
-                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle light and dark theme">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
-
                 <!-- Mobile Hamburger Menu Button -->
                 <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu"
                     aria-expanded="false" aria-controls="nav-links">
@@ -138,16 +120,10 @@
                 </div>
             </div>
 
-            <!-- Hero Image & Floating Badges -->
+            <!-- Hero Image -->
             <div class="hero-image">
                 <div class="image-wrapper">
                     <img src="assets/images/profile.jpg" alt="Sanskar Acharya Profile Picture" width="340" height="340" fetchpriority="high">
-                </div>
-                <div class="badge-floating badge-python">
-                    <i class="fa-brands fa-python" style="color: #387eb8;"></i> Python 3.12
-                </div>
-                <div class="badge-floating badge-django">
-                    <i class="fa-solid fa-server" style="color: #059669;"></i> Django 5
                 </div>
             </div>
 
@@ -201,51 +177,43 @@
 
         <div class="skills-grid">
             <div class="skill-item">
-                <div class="skill-icon"><i class="fa-brands fa-python"></i></div>
+                <img class="skill-logo" src="assets/images/logos/python.svg" alt="Python logo" width="48" height="48" loading="lazy">
                 <h3>Python</h3>
-                <span class="skill-level">Intermediate</span>
             </div>
 
             <div class="skill-item">
-                <div class="skill-icon"><i class="fa-solid fa-server"></i></div>
+                <img class="skill-logo" src="assets/images/logos/django.svg" alt="Django logo" width="48" height="48" loading="lazy">
                 <h3>Django</h3>
-                <span class="skill-level">Learning & Projects</span>
             </div>
 
             <div class="skill-item">
-                <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
+                <img class="skill-logo" src="assets/images/logos/mysql.svg" alt="MySQL logo" width="48" height="48" loading="lazy">
                 <h3>MySQL</h3>
-                <span class="skill-level">Intermediate</span>
             </div>
 
             <div class="skill-item">
-                <div class="skill-icon"><i class="fa-solid fa-code"></i></div>
+                <img class="skill-logo" src="assets/images/logos/cpp.svg" alt="C/C++ logo" width="48" height="48" loading="lazy">
                 <h3>C / C++</h3>
-                <span class="skill-level">Academic Core</span>
             </div>
 
             <div class="skill-item">
-                <div class="skill-icon"><i class="fa-brands fa-html5"></i></div>
+                <img class="skill-logo" src="assets/images/logos/html5.svg" alt="HTML5 logo" width="48" height="48" loading="lazy">
                 <h3>HTML5</h3>
-                <span class="skill-level">Proficient</span>
             </div>
 
             <div class="skill-item">
-                <div class="skill-icon"><i class="fa-brands fa-css3-alt"></i></div>
+                <img class="skill-logo" src="assets/images/logos/css3.svg" alt="CSS3 logo" width="48" height="48" loading="lazy">
                 <h3>CSS3</h3>
-                <span class="skill-level">Proficient</span>
             </div>
 
             <div class="skill-item">
-                <div class="skill-icon"><i class="fa-brands fa-js"></i></div>
+                <img class="skill-logo" src="assets/images/logos/javascript.svg" alt="JavaScript logo" width="48" height="48" loading="lazy">
                 <h3>JavaScript</h3>
-                <span class="skill-level">Intermediate</span>
             </div>
 
             <div class="skill-item">
-                <div class="skill-icon"><i class="fa-brands fa-github"></i></div>
+                <img class="skill-logo" src="assets/images/logos/github.svg" alt="GitHub logo" width="48" height="48" loading="lazy">
                 <h3>Git & GitHub</h3>
-                <span class="skill-level">Version Control</span>
             </div>
         </div>
     </section>
@@ -316,7 +284,7 @@
             <article class="project-card" data-category="python">
                 <div class="project-body">
                     <span class="project-tag">Python Game</span>
-                    <h3>Wordle Game Clone</h3>
+                    <h3>Wordle Game</h3>
                     <p>
                         A word guessing puzzle game built to refine string algorithms, validation rules, and interactive game loops in Python.
                     </p>

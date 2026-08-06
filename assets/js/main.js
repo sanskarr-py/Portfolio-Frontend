@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 0. UTILITIES
     // ----------------------------------------------------------------------
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-    const THEME_COLORS = { light: '#f8fafc', dark: '#0b0f19' };
 
     // ----------------------------------------------------------------------
     // 1. SCROLL PROGRESS BAR, BACK TO TOP & NAVBAR STATE
@@ -70,50 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ----------------------------------------------------------------------
-    // 2. DARK / LIGHT THEME TOGGLE
-    // ----------------------------------------------------------------------
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const savedTheme = localStorage.getItem('theme');
-
-    function applyTheme(theme, save) {
-        document.documentElement.setAttribute('data-theme', theme);
-        if (save) localStorage.setItem('theme', theme);
-        updateThemeIcon(theme === 'dark');
-        if (themeColorMeta) themeColorMeta.content = THEME_COLORS[theme] || THEME_COLORS.light;
-    }
-
-    function updateThemeIcon(isDark) {
-        if (!themeToggleBtn) return;
-        const icon = themeToggleBtn.querySelector('i');
-        if (icon) {
-            icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-        }
-        themeToggleBtn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-    }
-
-    // Initial state (already set by the inline head script; sync the icon)
-    const initialTheme = document.documentElement.getAttribute('data-theme') ||
-        (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    applyTheme(initialTheme, false);
-
-    // Keep the toggle in sync when the OS scheme changes (only if user never picked a theme)
-    if (window.matchMedia && !savedTheme) {
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            applyTheme(e.matches ? 'dark' : 'light', false);
-        });
-    }
-
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            applyTheme(newTheme, true);
-            showToast(newTheme === 'dark' ? '🌙 Dark mode enabled' : '☀️ Light mode enabled');
-        });
-    }
-
-    // ----------------------------------------------------------------------
-    // 3. MOBILE NAVIGATION MENU TOGGLE
+    // 2. MOBILE NAVIGATION MENU TOGGLE
     // ----------------------------------------------------------------------
     const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
     const navLinks = document.getElementById('nav-links');
@@ -156,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ----------------------------------------------------------------------
-    // 4. HERO SECTION DYNAMIC TYPING EFFECT
+    // 3. HERO SECTION DYNAMIC TYPING EFFECT
     // ----------------------------------------------------------------------
     const typingElement = document.getElementById('hero-typing-text');
     if (typingElement) {
@@ -204,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ----------------------------------------------------------------------
-    // 5. SCROLL REVEAL & ACTIVE NAV HIGHLIGHT (INTERSECTION OBSERVER)
+    // 4. SCROLL REVEAL (INTERSECTION OBSERVER)
     // ----------------------------------------------------------------------
     document.body.classList.add('js-reveal');
     const revealElements = document.querySelectorAll('.reveal');
@@ -236,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ----------------------------------------------------------------------
-    // 6. PROJECT CATEGORY FILTERING
+    // 5. PROJECT CATEGORY FILTERING
     // ----------------------------------------------------------------------
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
@@ -279,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ----------------------------------------------------------------------
-    // 7. CONTACT FORM HANDLING & TOAST NOTIFICATION
+    // 6. CONTACT FORM HANDLING & TOAST NOTIFICATION
     // ----------------------------------------------------------------------
     const contactForm = document.getElementById('contact-form');
 
@@ -335,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ----------------------------------------------------------------------
-    // 8. TOAST NOTIFICATIONS
+    // 7. TOAST NOTIFICATIONS
     // ----------------------------------------------------------------------
     function showToast(message, isError = false) {
         let toastContainer = document.querySelector('.toast-container');
