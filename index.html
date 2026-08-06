@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Sanskar Acharya - BSc.CSIT Student, Python & Django Developer. Explore my projects, technical skills, and software development journey.">
+    <meta name="keywords" content="Sanskar Acharya, Python, Django, BSc CSIT, Portfolio, Nepal, Web Development">
+    <meta name="author" content="Sanskar Acharya">
+
+    <title>Sanskar Acharya | Portfolio</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico">
+
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Custom CSS Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            
+            <!-- Logo -->
+            <a href="#home" class="logo" aria-label="Sanskar Acharya Home">
+                <span class="logo-box">SA</span>
+                <div class="logo-text">
+                    <h2>Sanskar Acharya</h2>
+                    <p>Python & Django Learner</p>
+                </div>
+            </a>
+
+            <!-- Navigation Controls & Links -->
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+                <!-- Theme Switcher Toggle -->
+                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle light and dark theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <!-- Mobile Hamburger Menu Button -->
+                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero reveal" id="home">
+        <div class="hero-container">
+
+            <!-- Hero Content -->
+            <div class="hero-content">
+                <span class="hero-greeting">👋 Hello, I'm</span>
+
+                <h1>Sanskar <span>Acharya</span></h1>
+
+                <div class="hero-title-typing">
+                    <span id="hero-typing-text"></span><span class="typing-cursor"></span>
+                </div>
+
+                <p class="hero-description">
+                    Building practical, reliable web applications while deepening my understanding of Python,
+                    Django, and backend system architecture.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        View Projects <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        Contact Me <i class="fa-regular fa-paper-plane"></i>
+                    </a>
+                </div>
+
+                <div class="hero-highlights">
+                    <div class="highlight-card">
+                        <h3>4th</h3>
+                        <p>Semester BSc.CSIT</p>
+                    </div>
+
+                    <div class="highlight-card">
+                        <h3>Pokhara</h3>
+                        <p>Nepal</p>
+                    </div>
+
+                    <div class="highlight-card">
+                        <h3>Open</h3>
+                        <p>To Opportunities</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Image & Floating Badges -->
+            <div class="hero-image">
+                <div class="image-wrapper">
+                    <img src="assets/images/profile.jpg" alt="Sanskar Acharya Profile Picture">
+                </div>
+                <div class="badge-floating badge-python">
+                    <i class="fa-brands fa-python" style="color: #387eb8;"></i> Python 3.12
+                </div>
+                <div class="badge-floating badge-django">
+                    <i class="fa-solid fa-server" style="color: #059669;"></i> Django 5
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section reveal" id="about">
+        <div class="section-heading">
+            <p class="section-label">ABOUT ME</p>
+            <h2>Hi, I'm Sanskar Acharya</h2>
+            <p class="section-subtitle">
+                A dedicated computer science student passionate about building clean, efficient, and user-friendly software solutions.
+            </p>
+        </div>
+
+        <div class="about-content">
+            <p>
+                I am currently pursuing my Bachelor's degree in Computer Science and Information Technology (BSc.CSIT) in Pokhara, Nepal.
+                I thrive on solving real-world challenges through code and continuous hands-on project creation.
+            </p>
+
+            <p>
+                My ongoing specialization revolves around backend engineering with Python & Django, relational databases, clean HTML/CSS architecture, and modern application development patterns.
+            </p>
+
+            <div class="about-highlights">
+                <div class="highlight">🎓 BSc.CSIT Student</div>
+                <div class="highlight">🐍 Python & Django Learner</div>
+                <div class="highlight">📍 Pokhara, Nepal</div>
+                <div class="highlight">⚡ Problem Solver</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section reveal" id="skills">
+        <div class="section-heading">
+            <p class="section-label">MY SKILLS</p>
+            <h2>Technologies & Stack</h2>
+            <p class="section-subtitle">
+                Tools and frameworks I actively utilize to design and develop software applications.
+            </p>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-icon"><i class="fa-brands fa-python"></i></div>
+                <h3>Python</h3>
+                <span class="skill-level">Intermediate</span>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-icon"><i class="fa-solid fa-server"></i></div>
+                <h3>Django</h3>
+                <span class="skill-level">Learning & Projects</span>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
+                <h3>MySQL</h3>
+                <span class="skill-level">Intermediate</span>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-icon"><i class="fa-solid fa-code"></i></div>
+                <h3>C / C++</h3>
+                <span class="skill-level">Academic Core</span>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-icon"><i class="fa-brands fa-html5"></i></div>
+                <h3>HTML5</h3>
+                <span class="skill-level">Proficient</span>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-icon"><i class="fa-brands fa-css3-alt"></i></div>
+                <h3>CSS3</h3>
+                <span class="skill-level">Proficient</span>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-icon"><i class="fa-brands fa-js"></i></div>
+                <h3>JavaScript</h3>
+                <span class="skill-level">Intermediate</span>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-icon"><i class="fa-brands fa-github"></i></div>
+                <h3>Git & GitHub</h3>
+                <span class="skill-level">Version Control</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section reveal" id="projects">
+        <div class="section-heading">
+            <p class="section-label">MY PROJECTS</p>
+            <h2>Featured Work</h2>
+            <p class="section-subtitle">
+                Explore a selection of software projects built during my learning journey.
+            </p>
+        </div>
+
+        <!-- Project Filter Buttons -->
+        <div class="project-filters">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="django">Django Apps</button>
+            <button class="filter-btn" data-filter="python">Python Scripts</button>
+        </div>
+
+        <div class="projects-grid">
+
+            <!-- Project 1 -->
+            <article class="project-card" data-category="django">
+                <div class="project-image">
+                    <img src="assets/images/project_library.png" alt="Library Management System Dashboard Preview">
+                </div>
+                <div class="project-body">
+                    <span class="project-tag">Django Web App</span>
+                    <h3>Library Management System</h3>
+                    <p>
+                        A comprehensive web application designed to manage book inventories, track user borrowings, and streamline administrative records.
+                    </p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Django</span>
+                        <span>MySQL</span>
+                        <span>Bootstrap</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="https://github.com/sanskarr-py" target="_blank" class="btn-dark">
+                            <i class="fa-brands fa-github"></i> GitHub Code
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="project-card" data-category="python">
+                <div class="project-image">
+                    <img src="assets/images/project_rps.png" alt="Rock Paper Scissors Game Preview">
+                </div>
+                <div class="project-body">
+                    <span class="project-tag">Python Game</span>
+                    <h3>Rock Paper Scissors</h3>
+                    <p>
+                        An interactive CLI & Graphical game built in Python to practice state management, random decision logic, and score tracking.
+                    </p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>OOP</span>
+                        <span>CLI</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="https://github.com/sanskarr-py" target="_blank" class="btn-dark">
+                            <i class="fa-brands fa-github"></i> GitHub Code
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="project-card" data-category="python">
+                <div class="project-image">
+                    <img src="assets/images/project_wordle.png" alt="Wordle Game Preview">
+                </div>
+                <div class="project-body">
+                    <span class="project-tag">Python Game</span>
+                    <h3>Wordle Game Clone</h3>
+                    <p>
+                        A word guessing puzzle game built to refine string algorithms, validation rules, and interactive game loops in Python.
+                    </p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Algorithms</span>
+                        <span>Game Logic</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="https://github.com/sanskarr-py" target="_blank" class="btn-dark">
+                            <i class="fa-brands fa-github"></i> GitHub Code
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section reveal" id="contact">
+        <div class="section-heading">
+            <p class="section-label">CONTACT</p>
+            <h2>Get In Touch</h2>
+            <p class="section-subtitle">
+                Interested in collaboration, projects, or just want to say hi? Send me a message below!
+            </p>
+        </div>
+
+        <div class="contact-container">
+
+            <!-- Contact Information Cards -->
+            <div class="contact-info">
+                <h3>Let's Connect</h3>
+
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <small>Email</small>
+                        <a href="mailto:sanskaraacharya77@gmail.com">sanskaraacharya77@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <small>Location</small>
+                        <p>Pokhara, Nepal</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fa-brands fa-github"></i>
+                    <div>
+                        <small>GitHub</small>
+                        <a href="https://github.com/sanskarr-py" target="_blank">github.com/sanskarr-py</a>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/sanskarr-py" target="_blank" aria-label="GitHub Profile">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/sanskar-acharya-5b60663b0/" target="_blank" aria-label="LinkedIn Profile">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="https://instagram.com/sanskar_ac" target="_blank" aria-label="Instagram Profile">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-message">
+                <h3>Send Me A Message</h3>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" placeholder="john@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" rows="5" placeholder="Hi Sanskar, I'd like to discuss a project..." required></textarea>
+                    </div>
+
+                    <button type="submit">
+                        Send Message <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <h3>Sanskar Acharya</h3>
+            <p>© 2026 All Rights Reserved.</p>
+            <small>Designed & Developed with ❤️ by Sanskar Acharya</small>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript File -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
