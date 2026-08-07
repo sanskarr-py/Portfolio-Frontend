@@ -111,55 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ----------------------------------------------------------------------
-    // 3. HERO SECTION DYNAMIC TYPING EFFECT
-    // ----------------------------------------------------------------------
-    const typingElement = document.getElementById('hero-typing-text');
-    if (typingElement) {
-        const phrases = [
-            'BSc.CSIT Student 🎓',
-            'Python Enthusiast 🐍',
-            'Learning by Building 💻',
-            'Lifelong Learner 🚀'
-        ];
-
-        if (prefersReducedMotion) {
-            typingElement.textContent = phrases[0];
-        } else {
-            let phraseIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-
-            function typeLoop() {
-                const currentPhrase = phrases[phraseIndex];
-
-                if (isDeleting) {
-                    typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                    charIndex--;
-                } else {
-                    typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                    charIndex++;
-                }
-
-                let typeSpeed = isDeleting ? 40 : 80;
-
-                if (!isDeleting && charIndex === currentPhrase.length) {
-                    typeSpeed = 2000; // Pause at end
-                    isDeleting = true;
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    phraseIndex = (phraseIndex + 1) % phrases.length;
-                    typeSpeed = 500; // Pause before typing next
-                }
-
-                setTimeout(typeLoop, typeSpeed);
-            }
-
-            typeLoop();
-        }
-    }
-
-    // ----------------------------------------------------------------------
-    // 4. SCROLL REVEAL (INTERSECTION OBSERVER)
+    // 3. SCROLL REVEAL (INTERSECTION OBSERVER)
     // ----------------------------------------------------------------------
     document.body.classList.add('js-reveal');
     const revealElements = document.querySelectorAll('.reveal');

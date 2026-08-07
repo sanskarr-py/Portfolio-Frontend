@@ -518,30 +518,6 @@ img {
     color: transparent;
 }
 
-.hero-title-typing {
-    font-size: clamp(20px, 2.6vw, 27px);
-    color: var(--text-body);
-    font-weight: 500;
-    margin-bottom: 18px;
-    min-height: 40px;
-    font-family: var(--font-display);
-}
-
-.typing-cursor {
-    display: inline-block;
-    width: 3px;
-    height: 1em;
-    background-color: var(--primary);
-    margin-left: 4px;
-    vertical-align: middle;
-    animation: blink 0.8s infinite;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
 .hero-description {
     font-size: 17px;
     color: var(--text-body);
@@ -1452,8 +1428,7 @@ footer small {
         transform: none !important;
     }
 
-    .scroll-wheel,
-    .typing-cursor {
+    .scroll-wheel {
         display: none;
     }
 }
