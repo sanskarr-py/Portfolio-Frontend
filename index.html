@@ -10,7 +10,8 @@
     <meta name="keywords" content="Sanskar Acharya, Python, Django, BSc CSIT, Portfolio, Nepal, Web Development">
     <meta name="author" content="Sanskar Acharya">
     <meta name="theme-color" content="#f8fafc">
-
+    <meta name="description" content="Portfolio of Sanskar Acharya, BSc.CSIT student and Python learner.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Sanskar Acharya Portfolio">
@@ -34,6 +35,16 @@
 
     <!-- Custom CSS Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Anti-flicker Theme Script -->
+    <script>
+        (function() {
+            const stored = localStorage.getItem('theme');
+            if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 </head>
 
 <body>
@@ -64,7 +75,10 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
 
-                <a href="#contact" class="btn btn-primary btn-nav">Hire Me</a>
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle light/dark theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
 
                 <!-- Mobile Hamburger Menu Button -->
                 <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu"
@@ -153,45 +167,105 @@
     <section class="about-section reveal" id="about">
         <div class="section-heading">
             <p class="section-label">ABOUT ME</p>
-            <h2>Hi, I'm Sanskar Acharya</h2>
+            <h2>Driven by Curiosity, Grounded in Fundamentals</h2>
             <p class="section-subtitle">
-                A dedicated computer science student passionate about building clean, efficient, and user-friendly software solutions.
+                A dedicated BSc.CSIT student crafting clean software, exploring Python ecosystems, and solving practical real-world problems.
             </p>
         </div>
 
-        <div class="about-content">
-            <p>
-                Hi, I'm <strong>Sanskar Acharya</strong>, a <strong>BSc.CSIT student</strong> who enjoys learning, building, and exploring new technologies.
-                My journey into programming started with curiosity, and over time it has grown into a genuine passion for creating useful and meaningful software.
-            </p>
+        <div class="about-container">
+            <div class="about-grid">
 
-            <p>
-                I'm currently focused on <strong>Python</strong> and <strong>Django</strong>, while also working with <strong>HTML, CSS, MySQL, Git, and GitHub</strong>.
-                I enjoy building web applications that not only work well but are also clean, simple, and easy to use.
-                Every project I work on teaches me something new and helps me become a better developer.
-            </p>
+                <!-- Left Column: Story & Bio Card -->
+                <div class="about-card about-story-card">
+                    <div class="card-badge"><i class="fa-solid fa-user"></i> My Story</div>
+                    <h3 class="about-card-title">Hi, I'm <span class="text-gradient">Sanskar Acharya</span></h3>
+                    
+                    <p class="about-lead">
+                        I'm a 4th semester <strong>BSc.CSIT student</strong> based in Pokhara, Nepal with a strong passion for software development, system logic, and full-stack web applications.
+                    </p>
+                    
+                    <p>
+                        My programming journey started with curiosity, evolving into a dedicated focus on building practical applications with <strong>Python</strong> and <strong>Django</strong>, along with modern web technologies and database management.
+                    </p>
 
-            <p>
-                I don't consider myself an expert — I see myself as someone who is always learning.
-                Whether it's solving a bug, trying a new framework, or contributing to a project, I enjoy the process of improving a little every day.
-                I believe that consistent practice and curiosity are the keys to growth.
-            </p>
+                    <p>
+                        I believe consistent practice, curiosity, and continuous learning are the keys to growth. Every project teaches me something new and fuels my drive to write cleaner, more efficient code.
+                    </p>
 
-            <p>
-                When I'm not coding, you'll usually find me exploring new technologies, improving my existing projects, or learning something that helps me become a better developer.
-                My goal is to keep growing, build software that solves real problems, and contribute to projects that make a positive impact.
-            </p>
+                    <div class="about-info-grid">
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <div>
+                                <span class="info-label">Degree</span>
+                                <span class="info-value">BSc.CSIT (4th Sem)</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <span class="info-label">Location</span>
+                                <span class="info-value">Pokhara, Nepal</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-code"></i></div>
+                            <div>
+                                <span class="info-label">Core Focus</span>
+                                <span class="info-value">Python & Backend</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-rocket"></i></div>
+                            <div>
+                                <span class="info-label">Status</span>
+                                <span class="info-value">Open to Opportunities</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <p>
-                Thank you for stopping by my portfolio.
-                Feel free to explore my work, and if you'd like to connect or collaborate, I'd be happy to hear from you.
-            </p>
+                <!-- Right Column: Key Pillars -->
+                <div class="about-pillars">
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div class="pillar-content">
+                            <h4>Web & Backend Development</h4>
+                            <p>Building functional web applications, REST APIs, and relational schemas using Python, Django, and MySQL.</p>
+                        </div>
+                    </div>
 
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <div class="pillar-content">
+                            <h4>Clean Code & Modular Design</h4>
+                            <p>Striving for structured, readable codebases, clear logic, and reliable version control with Git & GitHub.</p>
+                        </div>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div class="pillar-content">
+                            <h4>Continuous Growth Mindset</h4>
+                            <p>Constantly tackling challenges, exploring new frameworks, and sharpening computer science fundamentals every day.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Highlight Badges -->
             <div class="about-highlights">
-                <div class="highlight">🎓 BSc.CSIT Student</div>
-                <div class="highlight">🐍 Python Enthusiast</div>
-                <div class="highlight">📍 Pokhara, Nepal</div>
-                <div class="highlight">⚡ Always Learning</div>
+                <div class="highlight"><i class="fa-solid fa-graduation-cap"></i> BSc.CSIT Student</div>
+                <div class="highlight"><i class="fa-brands fa-python"></i> Python & Django Enthusiast</div>
+                <div class="highlight"><i class="fa-solid fa-database"></i> MySQL & Data Modeling</div>
+                <div class="highlight"><i class="fa-solid fa-bolt"></i> Continuous Learner</div>
             </div>
         </div>
     </section>
@@ -357,7 +431,7 @@
                     <i class="fa-solid fa-envelope"></i>
                     <div>
                         <small>Email</small>
-                        <a href="mailto:sanskaraacharya77@gmail.com" target="_blank" rel="noopener noreferrer">sanskaraacharya77@gmail.com</a>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sanskaraacharya77@gmail.com" target="_blank" rel="noopener noreferrer">sanskaraacharya77@gmail.com</a>
                     </div>
                 </div>
 
@@ -421,9 +495,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-container">
-            <a href="#home" class="footer-logo">SA</a>
-            <h3>Sanskar Acharya</h3>
-            <p class="footer-tagline">BSc.CSIT Student · Python Enthusiast</p>
+            <p class="footer-copy">© Copyright <strong>Sanskar Acharya</strong> All Rights Reserved</p>
 
             <div class="social-links footer-social">
                 <a href="https://github.com/sanskarr-py" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
@@ -437,8 +509,11 @@
                 </a>
             </div>
 
-            <p class="footer-copy">© 2026 All Rights Reserved.</p>
-            <small>Designed & Developed with ❤️ by Sanskar Acharya</small>
+            <span class="footer-made">Designed and developed with <i class="fa-solid fa-heart footer-heart"></i> by Sanskar Acharya</span>
+
+            <a href="#home" class="footer-back-to-top" aria-label="Back to top">
+                <i class="fa-solid fa-arrow-up"></i>
+            </a>
         </div>
     </footer>
 

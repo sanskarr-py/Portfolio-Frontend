@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const scrollPosition = window.scrollY;
 
             progressBar.style.width = `${(scrollPosition / totalHeight) * 100}%`;
-            scrollTopBtn.classList.toggle('visible', scrollPosition > 400);
+            scrollTopBtn.classList.toggle('visible', scrollPosition > 200);
             if (navbar) navbar.classList.toggle('scrolled', scrollPosition > 10);
 
             updateActiveNavLink(scrollPosition);
@@ -222,5 +222,79 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             toast.remove();
         }, 4000);
+    }
+
+    // ----------------------------------------------------------------------
+    // 8. 3D CARD TILT & MAGNETIC INTERACTION EFFECT
+    // ----------------------------------------------------------------------
+    if (!prefersReducedMotion && window.innerWidth > 768) {
+        const tiltCards = document.querySelectorAll('.highlight-card, .skill-item, .project-card, .pillar-card, .about-card');
+        
+        tiltCards.forEach(card => {
+            card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.3s ease';
+            
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -5;
+                const rotateY = ((x - centerX) / centerX) * 5;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+    }
+
+    // ----------------------------------------------------------------------
+    // 9. STAGGERED CHILD REVEAL ANIMATIONS
+    // ----------------------------------------------------------------------
+    const gridContainers = document.querySelectorAll('.skills-grid, .projects-grid, .hero-highlights, .about-info-grid');
+    gridContainers.forEach(container => {
+        const children = Array.from(container.children);
+        children.forEach((child, index) => {
+            child.style.transitionDelay = `${index * 0.08}s`;
+        });
+    });
+
+    // ----------------------------------------------------------------------
+    // 10. DARK / LIGHT THEME TOGGLE & PERSISTENCE
+    // ----------------------------------------------------------------------
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const storedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    const initialTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+    setTheme(initialTheme);
+
+    function setTheme(theme) {
+        if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            if (themeToggleBtn) {
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+                themeToggleBtn.setAttribute('aria-label', 'Switch to light mode');
+            }
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            if (themeToggleBtn) {
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+                themeToggleBtn.setAttribute('aria-label', 'Switch to dark mode');
+            }
+        }
+        localStorage.setItem('theme', theme);
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            setTheme(isDark ? 'light' : 'dark');
+        });
     }
 });
