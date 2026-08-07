@@ -118,8 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const phrases = [
             'BSc.CSIT Student 🎓',
             'Python Enthusiast 🐍',
-            'Python Developer 💻',
-            'Backend Developer in Progress 🚀'
+            'Learning by Building 💻',
+            'Lifelong Learner 🚀'
         ];
 
         if (prefersReducedMotion) {
