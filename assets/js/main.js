@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const phrases = [
             'BSc.CSIT Student 🎓',
             'Python Enthusiast 🐍',
-            'Django Developer 💻',
+            'Python Developer 💻',
             'Backend Developer in Progress 🚀'
         ];
 
