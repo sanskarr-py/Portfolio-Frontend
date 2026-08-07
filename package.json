@@ -1,0 +1,20 @@
+{
+  "name": "portfolio-frontend",
+  "version": "1.0.0",
+  "description": "Portfolio website for Sanskar Acharya",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build needed'",
+    "preview": "npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "static-site"
+  ],
+  "author": "Sanskar Acharya",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.14"
+  }
+}
