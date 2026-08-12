@@ -1,33 +1,56 @@
 console.log("SCRIPT.JS IS LOADED");
-emailjs.init({
-    publicKey: "YnscrFGsyRxuA5cFX"
-});
 
-const form = document.getElementById("contact-form");
+document.addEventListener("DOMContentLoaded", function () {
 
-form.addEventListener("submit", function (event) {
-    event.preventDefault();
+    console.log("DOM LOADED");
 
-    const button = form.querySelector("button");
-    button.disabled = true;
-    button.innerHTML = "Sending...";
+    const form = document.getElementById("contact-form");
 
-    emailjs.sendForm(
-        "service_7kjrl6g",
-        "template_p4gc9n6",
-        form
-    )
-    .then(function () {
-        alert("Thanks for contacting us! We’ll get back to you soon.");
-        form.reset();
-    })
-    .catch(function (error) {
-        console.error("EmailJS Error:", error);
-        alert("Failed to send message. Please try again.");
-    })
-    .finally(function () {
-        button.disabled = false;
-        button.innerHTML =
-            'Send Message <i class="fa-solid fa-paper-plane"></i>';
+    if (!form) {
+        console.error("ERROR: #contact-form was not found.");
+        return;
+    }
+
+    console.log("CONTACT FORM FOUND");
+
+    emailjs.init({
+        publicKey: "YnscrFGsyRxuA5cFX"
+    });
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        console.log("FORM SUBMITTED");
+
+        const button = form.querySelector("button");
+        button.disabled = true;
+        button.innerHTML = "Sending...";
+
+        emailjs.send(
+            "service_7kjrl6g",
+            "template_p4gc9n6",
+            {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                message: document.getElementById("message").value
+            }
+        )
+        .then(function (response) {
+            console.log("EMAIL SENT:", response);
+
+            alert("Message sent successfully!");
+
+            form.reset();
+        })
+        .catch(function (error) {
+            console.error("EMAILJS ERROR:", error);
+
+            alert("Failed to send message. Check the browser console.");
+        })
+        .finally(function () {
+            button.disabled = false;
+            button.innerHTML =
+                'Send Message <i class="fa-solid fa-paper-plane"></i>';
+        });
     });
 });
