@@ -1,3 +1,4 @@
+console.log("SCRIPT.JS IS LOADED");
 emailjs.init({
     publicKey: "YnscrFGsyRxuA5cFX"
 });
